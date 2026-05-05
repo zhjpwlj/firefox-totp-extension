@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>OpenPass</title><link rel="stylesheet" href="popup.css" /></head>
+<body>
+<main>
+  <h1>OpenPass</h1>
+  <section id="setup">
+    <input id="csvFile" type="file" accept=".csv,text/csv" />
+    <textarea id="csvInput" placeholder="Paste CSV: name,url,username,password,totp_secret"></textarea>
+    <input id="masterPassword" type="password" placeholder="Master Password" />
+    <button id="importBtn">Import & Encrypt</button>
+  </section>
+  <section id="unlock">
+    <input id="unlockPassword" type="password" placeholder="Unlock Master Password" />
+    <div class="row"><button id="unlockBtn">Unlock Vault</button><input id="lockTimeout" type="number" min="1" max="60" value="10" title="Auto-lock minutes" /></div>
+  </section>
+  <section id="vault" class="hidden">
+    <div class="row"><input id="search" type="text" placeholder="Search accounts" /><button id="viewToggle">View All</button></div>
+    <div id="accountList"></div>
+    <button id="lockBtn" class="secondary">Lock</button>
+  </section>
+  <p id="status"></p>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "OpenPass",
+  "version": "1.0.0",
+  "description": "Secure password manager for Firefox with local encryption and TOTP.",
+  "permissions": ["storage", "tabs", "scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "scripts": ["src/crypto.js", "src/background.js"]
+  },
+  "action": {
+    "default_title": "OpenPass",
+    "default_popup": "src/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "openpass@example.com",
+      "strict_min_version": "109.0"
+    }
+  }
+}
